@@ -260,25 +260,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Personal Notes:
-
-    Loves Music
-
-    Likes trivia games
-
-    Likes
-    to learn new skills in his free time
-
-
-    Student Notes:
-
-    Feels unsure
-    of whether he is interpreting sheet music correctly or not
-
-    Kinesthetic
-    learner
-
-'
+  m_text: "PROBLEM STATEMENT\n\nSince Josh has no-one to tell him if he is doing
+    it right, it\u2019s hard for him to actually understand what he is supposed to
+    be doing. He does not want to continue practicing his music sheet reading skills
+    until he is sure how it works, because he is afraid that if he starts learning
+    it the wrong way, it will be hard for him to relearn the skill the right way.
+    Josh needs a tool that will let him practice his reading skills whenever he can,
+    and will provide instant feedback on how accurate he is."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -306,14 +294,14 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 514
+  m_textAlignment: 257
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -347,10 +335,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 374383845}
-    characterCount: 205
+    characterCount: 517
     spriteCount: 0
-    spaceCount: 33
-    wordCount: 32
+    spaceCount: 99
+    wordCount: 99
     linkCount: 0
     lineCount: 9
     pageCount: 1
@@ -801,7 +789,7 @@ MonoBehaviour:
 
       Practice and learn to read sheet music in
       real time'
-    - 'Overview
+    - 'OVERVIEW
 
 
       Title: Read me this (Title in progress)
@@ -819,125 +807,90 @@ MonoBehaviour:
       Learning Level: Grades 6 - 12 and college
 
 '
-    - 'Proposed Education Software Solution to a Learning Problem
-
-
-      Some music
-      students find it difficult to read sheet music. Even if they know all the notation,
+    - "PROPOSED EDUCATION SOFTWARE SOLUTION TO A LEARNING PROBLEM\n\nSome music students
+      find it difficult to read sheet music. Even if they know all the notation,
       they can be confused when it comes to interpreting it  with the correct notes
-      and rhythm.
-
-'
-    - 'To solve this problem I propose to develop an application that lets the users
-      learn music notation (if necessary), and also exercise their reading abilities
-      in practical situations. The users  would be able to read a randomly generated
-      sheet of music and play it (using their computer keyboards or the virtual piano
-      in the screen) along with the application. They would receive instant feedback
-      about how they are doing.
-
-'
-    - 'Competing Software Review
-
-
-      Music Notation Practice - Web application
-      for notation practice and ear training. Users can be anyone that goes to the
-      web page, even without creating an account. However, you can create an account
-      to make a one time payment for a premium membership.
-
-'
-    - "Music Theory Note Identification - Web and iOS app with a library of music
-      notation and ear training exercises. It also provides some music theory lessons,
-      which also include music notation lessons. The web application is completely
-      free, but the iOS apps (divided into lessons and exercises) are paid.\r\n\nPractice
-      Music Theory & Ear Training Exercises - Web application aimed at music teachers
-      and their students. It contains a variety of exercises including music notation,
-      ear training and piano and guitar frets. Through this platform teachers can
-      assign their students exercises and check their progress.\r"
-    - 'Competing Software Suggested Improvements
-
-
-      Practicality - Let the
-      user read some tunes (random or predetermined) with both notes and rhythm,
-      so it resembles more a practical scenario.
-
-'
-    - "Better Accessibility - Users should also be able to access the applications
-      at any time from any device, so that they can get the most out of it. For applications
-      that help the user practice a specific skill, it is especially useful for the
-      user to have access at any time, so that they can practice whenever they are
-      free, even if for just 5 mins.\r"
-    - "Engagement Factors - Have a library of the most popular melodies available,
-      so that people are more willing to practice. It would also be interesting to
-      add a sort of market that lets the players buy new instrument sounds with points
-      they obtain from playing. \r\n"
-    - 'Stakeholders & Users
+      and rhythm. To solve this problem I propose to develop an application that
+      lets the users learn music notation (if necessary), and also exercise their
+      reading abilities in practical situations. The users  would be able to read
+      a randomly generated sheet of music and play it (using their computer keyboards
+      or the virtual piano in the screen) along with the application. They would
+      receive instant feedback about how they are doing.\r"
+    - "COMPETING SOFTWARE REVIEW\r\n\nMusic Notation Practice - Web application for
+      notation practice and ear training. Users can be anyone that goes to the web
+      page, even without creating an account. However, you can create an account
+      to make a one time payment for a premium membership.\n\nMusic Theory Note Identification
+      - Web and iOS app with a library of music notation and ear training exercises.
+      It also provides some music theory lessons, which also include music notation
+      lessons. The web application is completely free, but the iOS apps (divided
+      into lessons and exercises) are paid.\r\n\nPractice Music Theory & Ear Training
+      Exercises - Web application aimed at music teachers and their students. It
+      contains a variety of exercises including music notation, ear training and
+      piano and guitar frets. Through this platform teachers can assign their students
+      exercises and check their progress.\r"
+    - "COMPETING SOFTWARE SUGGESTED IMPROVEMENTS\n\nPracticality - Let the user read
+      some tunes (random or predetermined) with both notes and rhythm, so it resembles
+      more a practical scenario.\n\nBetter Accessibility - Users should also be able
+      to access the applications at any time from any device, so that they can get
+      the most out of it. For applications that help the user practice a specific
+      skill, it is especially useful for the user to have access at any time, so
+      that they can practice whenever they are free, even if for just 5 mins.\n\nEngagement
+      Factors - Have a library of the most popular melodies available, so that people
+      are more willing to practice. It would also be interesting to add a sort of
+      market that lets the players buy new instrument sounds with points they obtain
+      from playing. \r"
+    - 'STEAKHOLDERS & USERS
 
 
       Teachers
 
       Parents
 
-      Students 6
-      - 12th grade and college students
+      Students 6 -
+      12th grade and college students
 
       Musicians 13 years old or above
 
 '
-    - 'Persona
+    - "PERSONA\r\n\nName: Josh\r\nAge: 16 years old\r\nGender: Male\r\nLocation:
+      Suburbia USA\nPersonal Notes:\r\n\tLoves Music\r\n\tLikes trivia games\r\n\tLikes
+      to learn new skills in his free time\r\nStudent Notes:\r\n\tFeels unsure of
+      whether he is interpreting sheet music correctly or not\r\n\tKinesthetic learner\nJustification
+      of Persona Decisions:\r\nAfter meeting with stakeholders and gathering information,
+      I settled on a persona named Josh. He represents the users of this software;
+      a person looking to practice reading sheet music, and have instant feedback
+      of whether they are doing it correctly or not.\r"
+    - 'PROBLEM SCENARIO
 
 
-      Name: Josh
+      Josh is passionate about music, and as such he wants
+      to learn how to read and play it. Josh has looked around the internet to learn
+      how to read sheet music. He understands what each symbol is supposed to mean,
+      but there is no way for him to make sure he can play the right notes at the
+      right time, according to the sheets. There is also no way for him to practice
+      reading and playing at the same time and make sure he is doing it right.'
+    - 'ACTIVITY SCENARIO
 
-      Age: 16 years old
-
-      Gender: Male
-
-      Location:
-      Suburbia USA
-
-'
-    - "Personal Notes:\r\nLoves Music\r\nLikes trivia games\r\nLikes to learn new
-      skills in his free time\r\n\nStudent Notes:\r\nFeels unsure of whether he is
-      interpreting sheet music correctly or not\r\nKinesthetic learner\r"
-    - 'Justification of Persona Decisions:
-
-      After meeting with stakeholders
-      and gathering information, I settled on a persona named Josh. He represents
-      the users of this software; a person looking to practice reading sheet music,
-      and have instant feedback of whether they are doing it correctly or not.
-
-'
-    - "Problem Scenario\r\nJosh is passionate about music, and as such he wants to
-      learn how to read and play it. Josh has looked around the internet to learn
-      how to read sheet music.\r"
-    - He understands what each symbol is supposed to mean, but there is no way for
-      him to make sure he can play the right notes at the right time, according to
-      the sheets. There is also no way for him to practice reading and playing at
-      the same time and make sure he is doing it right.
-    - 'Activity Scenario
 
       Since Josh wanted to improve his reading skills,
-      he started to search the web for a tool that could help him.
+      he started to search the web for a tool that could help him. While he was doing
+      his research he found an application that lets him practice note identification,
+      rhythm and both of them together. The application plays like a game, in the
+      sense that he gets scored based on how accurate he was, so he is sure that
+      he is doing it right.
 
-'
-    - 'While he was doing his research he found an application that lets him practice
-      note identification, rhythm and both of them together. The application plays
-      like a game, in the sense that he gets scored based on how accurate he was,
-      so he is sure that he is doing it right.
 
-'
-    - After a while of using the application, Josh started to gain confidence in
-      his reading skills. His reading is faster, more accurate, and he is confident
-      he is doing it right. He is learning to read sheet music.
-    - "Problem Statement\r\nSince Josh has no-one to tell him if he is doing it right,
-      it\u2019s hard for him to actually understand what he is supposed to be doing.\r\n"
-    - 'He does not want to continue practicing his music sheet reading skills until
+      After a while of using the application, Josh
+      started to gain confidence in his reading skills. His reading is faster, more
+      accurate, and he is confident he is doing it right. He is learning to read
+      sheet music.'
+    - "PROBLEM STATEMENT\n\nSince Josh has no-one to tell him if he is doing it right,
+      it\u2019s hard for him to actually understand what he is supposed to be doing.
+      He does not want to continue practicing his music sheet reading skills until
       he is sure how it works, because he is afraid that if he starts learning it
       the wrong way, it will be hard for him to relearn the skill the right way.
       Josh needs a tool that will let him practice his reading skills whenever he
-      can, and will provide instant feedback on how accurate he is.
-
-'
+      can, and will provide instant feedback on how accurate he is."
     textArea: {fileID: 374383845}
     introImage: {fileID: 1884604679}
     backButton: {fileID: 613682149}

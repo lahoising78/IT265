@@ -40,16 +40,19 @@ public class CanvasUIFunctions : MonoBehaviour
         
         if(currentSlide == 0)
         {
-            introSceneObjects.introImage.SetActive(true);
             introSceneObjects.textArea.alignment = TextAlignmentOptions.Center;
-
+            introSceneObjects.introImage.SetActive(true);
             introSceneObjects.backButton.SetActive(false);
         }
         else if(currentSlide == 1)
         {
             introSceneObjects.textArea.alignment = TextAlignmentOptions.MidlineLeft;
-            introSceneObjects.backButton.SetActive(true);
             introSceneObjects.introImage.SetActive(false);
+            introSceneObjects.backButton.SetActive(true);
+        }
+        else if(currentSlide == textSlideCount - 2)
+        {
+            introSceneObjects.nextButton.SetActive(true);
         }
         else if(currentSlide == textSlideCount - 1)
         {
