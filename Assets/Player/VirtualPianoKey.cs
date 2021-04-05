@@ -11,7 +11,8 @@ public class VirtualPianoKey : MonoBehaviour
     private bool m_pressed = false;
     private bool m_clicked = false;
 
-    [SerializeField] private AudioSource audio = null;
+    [SerializeField] private AudioSource noteAudio = null;
+    [SerializeField] private float pitchIncrement = 1.0f;
 
     void Awake()
     {
@@ -21,7 +22,8 @@ public class VirtualPianoKey : MonoBehaviour
         }
         idleColor = spriteRend.color;
 
-        if(!audio) audio = GetComponent<AudioSource>();
+        if(!noteAudio) noteAudio = GetComponent<AudioSource>();
+        noteAudio.pitch = Mathf.Pow(2.0f, pitchIncrement / 12.0f);
     }
 
     void Update()
@@ -38,7 +40,7 @@ public class VirtualPianoKey : MonoBehaviour
 
     private void Pressed()
     {
-        audio.Play();
+        noteAudio.Play();
         m_pressed = true;
         spriteRend.color = pressedColor;
     }
@@ -46,7 +48,6 @@ public class VirtualPianoKey : MonoBehaviour
     private void Unpressed()
     {
         if(m_clicked) return;
-        audio.Stop();
         m_pressed = false;
         spriteRend.color = idleColor;
     }
