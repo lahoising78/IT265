@@ -40,9 +40,9 @@ public class Song : MonoBehaviour
                                     notesSpaceMin.position.x;
 
             barNoteStartOffset = barDimensions.position.x - notesSpaceMin.position.x;
-
-            Destroy(barDimensions.gameObject);
         }
+
+        Destroy(barsTransform.GetChild(0).gameObject);
 
         SetupSong(new RawSong(), 60);
     }
@@ -104,6 +104,8 @@ public class Song : MonoBehaviour
         );
 
         InstantiateBarElement(wholePrefab, notePosition);
+        if(offset.y <= 0.0f)
+            InstantiateBarElement(extraLinePrefab, notePosition);
         currentBarCompletion += 1.0f / (float)(1 << (int)note.rhythm);
     }
 
