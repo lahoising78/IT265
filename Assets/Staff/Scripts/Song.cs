@@ -6,7 +6,7 @@ public class Song : MonoBehaviour
     [SerializeField] private Transform barsTransform = null;
     [SerializeField] private GameObject barPrefab = null;
     [SerializeField] private GameObject extraLinePrefab = null;
-    [SerializeField] private GameObject wholePrefab = null;
+    [SerializeField] private GameObject[] notePrefabs = null;
     
     private Queue<ProcessedNote> notes = new Queue<ProcessedNote>();
     private RawSong rawSong = null;
@@ -103,7 +103,10 @@ public class Song : MonoBehaviour
             currentBar.position.z - 0.001f
         );
 
-        InstantiateBarElement(wholePrefab, notePosition);
+        int prefabIndex = (int)note.rhythm;
+        if(prefabIndex >= notePrefabs.Length) prefabIndex = notePrefabs.Length - 1;
+        GameObject notePrefab = notePrefabs[ prefabIndex ];
+        InstantiateBarElement(notePrefab, notePosition);
         if(offset.y <= 0.0f)
             InstantiateBarElement(extraLinePrefab, notePosition);
         currentBarCompletion += 1.0f / (float)(1 << (int)note.rhythm);
