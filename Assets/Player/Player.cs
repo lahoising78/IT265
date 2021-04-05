@@ -4,9 +4,6 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    // [SerializeField] private Transform virtualPianoButtons = null;
-    // private Button[] buttons = null;
-
     private Dictionary<Key, KeyCode> keyToCode = new Dictionary<Key, KeyCode>{
         {Key.C, KeyCode.S},
         {Key.D, KeyCode.D},
@@ -17,39 +14,17 @@ public class Player : MonoBehaviour
         {Key.B, KeyCode.K},
     };
 
-    private Dictionary<Key, bool> virtualPiano = new Dictionary<Key, bool>();
+    private VirtualPianoKey[] virtualKeys = null;
 
     void Awake()
     {
-        // if(virtualPianoButtons)
-        // {
-        //     buttons = virtualPianoButtons.GetComponentsInChildren<Button>();
-        //     foreach(Button btn in buttons)
-        //     {
-        //         Key key = (Key)(btn.transform.GetSiblingIndex() + 1);
-        //         virtualPiano[key] = false;
-                
-        //         btn.onClick.AddListener(delegate() {
-        //             virtualPiano[ key ] = true;
-        //         });
-        //     }
-        // }
-    }
-
-    void Update()
-    {
-        // for(int i = 1; i < (int)Key.COUNT; i++)
-        // {
-        //     Key key = (Key)i;
-        //     if(key == Key.SILENCE) continue;
-        //     if(IsKeyPressed(key))
-        //         buttons[i-1].onClick.Invoke();
-        // }
+        virtualKeys = GetComponentsInChildren<VirtualPianoKey>();
     }
 
     public bool IsKeyPressed(Key key)
     {
-        return Input.GetKey( keyToCode[key] );
+        return  Input.GetKey( keyToCode[key] ) ||
+                virtualKeys[ (int)key - 1 ].isPresssed;
     }
     
     public enum Key : int

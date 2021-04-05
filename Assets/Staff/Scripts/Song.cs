@@ -8,6 +8,10 @@ public class Song : MonoBehaviour
     [SerializeField] private GameObject extraLinePrefab = null;
     [SerializeField] private GameObject[] notePrefabs = null;
     
+    [SerializeField] private AudioSource metronomeTic = null;
+    private float secsPerBeat = 0.0f;
+    private float nextBeatTime = 0.0f;
+    
     private Queue<ProcessedNote> notes = new Queue<ProcessedNote>();
     private RawSong rawSong = null;
     private Transform currentBar = null;
@@ -17,6 +21,8 @@ public class Song : MonoBehaviour
     private float barWidth = 0.0f;
     private float c4PosY = 0.0f;
     private float barNoteStartOffset = 0.0f;
+
+    private float staffSpeed = 0.0f;
 
     void Awake()
     {
@@ -44,12 +50,28 @@ public class Song : MonoBehaviour
 
         Destroy(barsTransform.GetChild(0).gameObject);
 
+        if(!metronomeTic) metronomeTic = GetComponent<AudioSource>();
         SetupSong(new RawSong(), 60);
+    }
+
+    void Update()
+    {
+        Vector3 newPosition = barsTransform.position;
+        newPosition.x -= staffSpeed * Time.deltaTime;
+        barsTransform.position = newPosition;
+
+        float currentTime = Time.time;
+        if(currentTime - nextBeatTime >= 0.0f)
+        {
+            nextBeatTime = currentTime + secsPerBeat;
+            metronomeTic.Play();
+        }
     }
 
     public void SetupSong(RawSong song, int bpm)
     {
         this.rawSong = song;
+        this.secsPerBeat = 60.0f / bpm;
 
         notes.Clear();
         float time = 0.0f;
@@ -66,6 +88,7 @@ public class Song : MonoBehaviour
     private void AddNote(Note note, ref float time, int bpm)
     {
         float secsPerWholeNote = bpm / 60.0f * 4.0f;
+        staffSpeed = barWidth / secsPerWholeNote;
         ProcessedNote processed = new ProcessedNote();
         processed.note = note;
         
