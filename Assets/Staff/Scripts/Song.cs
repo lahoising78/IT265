@@ -15,7 +15,7 @@ public class Song : MonoBehaviour
     private float spaceBetweenNotesY = 0.0f;
     private float spaceForNotesInBar = 0.0f;
     private float barWidth = 0.0f;
-    private float bottomLineY = 0.0f;
+    private float c4PosY = 0.0f;
     private float barNoteStartOffset = 0.0f;
 
     void Awake()
@@ -28,11 +28,11 @@ public class Song : MonoBehaviour
             barWidth =  max.position.x -
                         min.position.x;
 
-            bottomLineY = min.position.y;
-
             spaceBetweenNotesY =    max.position.y -
                                     min.position.y;
             spaceBetweenNotesY /= 8.0f;
+
+            c4PosY = min.position.y - spaceBetweenNotesY * 2.0f;
 
             Transform notesSpaceMin = barDimensions.GetChild(2);
             Transform notesSpaceMax = barDimensions.GetChild(3);
@@ -84,7 +84,6 @@ public class Song : MonoBehaviour
             currentBarCompletion = 0.0f;
         }
 
-        float c4Pos = bottomLineY - spaceBetweenNotesY * 2.0f;
         int keyDiff = (int)note.key - (int)Player.Key.C;
         
         // put silence in the middle of the pentagram
@@ -95,12 +94,12 @@ public class Song : MonoBehaviour
 
         Vector2 offset = new Vector2(
             spaceForNotesInBar * currentBarCompletion,
-            c4Pos + spaceBetweenNotesY * (keyDiff + octaveDiff * 8)
+            spaceBetweenNotesY * (keyDiff + octaveDiff * 8)
         );
 
         Vector3 notePosition = new Vector3(
             currentBar.position.x - barNoteStartOffset + offset.x,
-            c4Pos, //bottomLineY + offset.y,
+            c4PosY + offset.y,
             currentBar.position.z - 0.001f
         );
 
