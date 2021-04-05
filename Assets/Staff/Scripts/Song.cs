@@ -13,7 +13,7 @@ public class Song : MonoBehaviour
     private Transform currentBar = null;
     
     private float spaceBetweenNotesY = 0.0f;
-    private float spacePerQuarterNoteX = 0.0f;
+    private float spaceForNotesInBar = 0.0f;
     private float barWidth = 0.0f;
     private float bottomLineY = 0.0f;
     private float barNoteStartOffset = 0.0f;
@@ -36,11 +36,10 @@ public class Song : MonoBehaviour
 
             Transform notesSpaceMin = barDimensions.GetChild(2);
             Transform notesSpaceMax = barDimensions.GetChild(3);
-            spacePerQuarterNoteX =  notesSpaceMax.position.x -
+            spaceForNotesInBar =  notesSpaceMax.position.x -
                                     notesSpaceMin.position.x;
-            spacePerQuarterNoteX /= 4.0f;
 
-            barNoteStartOffset = notesSpaceMin.localPosition.x;
+            barNoteStartOffset = barDimensions.position.x - notesSpaceMin.position.x;
 
             Destroy(barDimensions.gameObject);
         }
@@ -82,7 +81,31 @@ public class Song : MonoBehaviour
         if(currentBarCompletion == 1.0f)
         {
             InstantiateBar(ref barCount, ref currentOffset);
+            currentBarCompletion = 0.0f;
         }
+
+        float c4Pos = bottomLineY - spaceBetweenNotesY * 2.0f;
+        int keyDiff = (int)note.key - (int)Player.Key.C;
+        
+        // put silence in the middle of the pentagram
+        if(note.key == Player.Key.SILENCE) keyDiff += (int)Player.Key.C - (int)Player.Key.B; 
+
+        const int centralCOctave = 4;
+        int octaveDiff = note.octave - centralCOctave;
+
+        Vector2 offset = new Vector2(
+            spaceForNotesInBar * currentBarCompletion,
+            c4Pos + spaceBetweenNotesY * (keyDiff + octaveDiff * 8)
+        );
+
+        Vector3 notePosition = new Vector3(
+            currentBar.position.x - barNoteStartOffset + offset.x,
+            c4Pos, //bottomLineY + offset.y,
+            currentBar.position.z - 0.001f
+        );
+
+        InstantiateBarElement(wholePrefab, notePosition);
+        currentBarCompletion += 1.0f / (float)(1 << (int)note.rhythm);
     }
 
     private void InstantiateBar(ref int barCount, ref float currentOffset)
@@ -93,9 +116,11 @@ public class Song : MonoBehaviour
             barsTransform.position.z
         );
 
-        currentBar = InstantiateBarElement(
+        currentBar = Instantiate(
             barPrefab,
-            newBarPosition
+            newBarPosition,
+            Quaternion.identity,
+            barsTransform
         ).transform;
 
         barCount++;
@@ -108,7 +133,7 @@ public class Song : MonoBehaviour
             prefab,
             position,
             Quaternion.identity,
-            barsTransform
+            currentBar
         );
     }
     

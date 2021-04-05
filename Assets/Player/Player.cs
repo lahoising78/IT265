@@ -21,13 +21,13 @@ public class Player : MonoBehaviour
     public enum Key : int
     {
         SILENCE = 0,
-        A,
-        B,
         C,
         D,
         E,
         F,
         G,
+        A,
+        B,
         COUNT
     }
 }
