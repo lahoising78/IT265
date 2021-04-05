@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -23,8 +22,7 @@ public class Player : MonoBehaviour
 
     public bool IsKeyPressed(Key key)
     {
-        return  Input.GetKey( keyToCode[key] ) ||
-                virtualKeys[ (int)key - 1 ].isPresssed;
+        return  virtualKeys[ (int)key - 1 ].isPresssed;
     }
     
     public enum Key : int

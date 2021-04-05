@@ -14,6 +14,7 @@ public class RawSong
             new Note(Player.Key.G, RhythmNote.QUARTER,  4),
             new Note(Player.Key.A, RhythmNote.QUARTER,  4),
             new Note(Player.Key.B, RhythmNote.QUARTER,  4),
+            new Note(Player.Key.C, RhythmNote.WHOLE,  5),
         };
     }
 

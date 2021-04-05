@@ -23,6 +23,7 @@ public class Song : MonoBehaviour
     private float barNoteStartOffset = 0.0f;
 
     private float staffSpeed = 0.0f;
+    private int ticCount = 0;
 
     void Awake()
     {
@@ -56,15 +57,19 @@ public class Song : MonoBehaviour
 
     void Update()
     {
-        Vector3 newPosition = barsTransform.position;
-        newPosition.x -= staffSpeed * Time.deltaTime;
-        barsTransform.position = newPosition;
-
         float currentTime = Time.time;
         if(currentTime - nextBeatTime >= 0.0f)
         {
             nextBeatTime = currentTime + secsPerBeat;
             metronomeTic.Play();
+            ticCount++;
+        }
+        
+        if(ticCount > 4)
+        {
+            Vector3 newPosition = barsTransform.position;
+            newPosition.x -= staffSpeed * Time.deltaTime;
+            barsTransform.position = newPosition;
         }
     }
 
