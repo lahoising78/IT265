@@ -20,7 +20,8 @@ public class Player : MonoBehaviour
     
     public enum Key : int
     {
-        A = 0,
+        SILENCE = 0,
+        A,
         B,
         C,
         D,

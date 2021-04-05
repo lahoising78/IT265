@@ -7,21 +7,24 @@ public class RawSong
     public RawSong()
     {
         notes = new Note[]{
-            new Note(Player.Key.C, RhythmNote.WHOLE, 4),
-            new Note(Player.Key.D, RhythmNote.WHOLE, 4),
-            new Note(Player.Key.E, RhythmNote.WHOLE, 4),
-            new Note(Player.Key.F, RhythmNote.WHOLE, 4),
-            new Note(Player.Key.G, RhythmNote.WHOLE, 4),
-            new Note(Player.Key.A, RhythmNote.WHOLE, 4),
-            new Note(Player.Key.B, RhythmNote.WHOLE, 4),
+            new Note(Player.Key.C, RhythmNote.WHOLE,    4),
+            new Note(Player.Key.D, RhythmNote.HALF,     4),
+            new Note(Player.Key.E, RhythmNote.HALF,     4),
+            new Note(Player.Key.F, RhythmNote.QUARTER,  4),
+            new Note(Player.Key.G, RhythmNote.QUARTER,  4),
+            new Note(Player.Key.A, RhythmNote.QUARTER,  4),
+            new Note(Player.Key.B, RhythmNote.QUARTER,  4),
         };
     }
+
+    public Note[] GetNotes() { return notes; }
 }
 
 public enum RhythmNote
 {
-    WHOLE,
+    WHOLE = 0,
     HALF,
+    QUARTER,
     EIGTH,
     SIXTEENTH
 }
@@ -29,7 +32,7 @@ public enum RhythmNote
 public struct Note
 {
     public Player.Key key;
-    RhythmNote rhythm;
+    public RhythmNote rhythm;
     public int octave;
 
     public Note(Player.Key key, RhythmNote rhythm, int octave)
