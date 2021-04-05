@@ -7,14 +7,16 @@ public class Song : MonoBehaviour
     [SerializeField] private GameObject barPrefab = null;
     [SerializeField] private GameObject extraLinePrefab = null;
     [SerializeField] private GameObject wholePrefab = null;
+    
     private Queue<ProcessedNote> notes = new Queue<ProcessedNote>();
     private RawSong rawSong = null;
+    private Transform currentBar = null;
     
     private float spaceBetweenNotesY = 0.0f;
     private float spacePerQuarterNoteX = 0.0f;
     private float barWidth = 0.0f;
     private float bottomLineY = 0.0f;
-    private float barStartOffset = 0.0f;
+    private float barNoteStartOffset = 0.0f;
 
     void Awake()
     {
@@ -38,7 +40,7 @@ public class Song : MonoBehaviour
                                     notesSpaceMin.position.x;
             spacePerQuarterNoteX /= 4.0f;
 
-            barStartOffset = notesSpaceMin.localPosition.x;
+            barNoteStartOffset = notesSpaceMin.localPosition.x;
 
             Destroy(barDimensions.gameObject);
         }
@@ -48,23 +50,56 @@ public class Song : MonoBehaviour
 
     public void SetupSong(RawSong song, int bpm)
     {
-        float secsPerWholeNote = bpm / 60.0f * 4.0f;
         this.rawSong = song;
 
         notes.Clear();
         float time = 0.0f;
+        int barCount = 0;
+        float currentBarCompletion = 1.0f;
+        float currentOffset = 0.0f;
         foreach(Note note in song.GetNotes())
         {
-            ProcessedNote processed = new ProcessedNote();
-            processed.note = note;
-            
-            float noteDuration = (float)(1 << (int)(note.rhythm));
-            noteDuration = secsPerWholeNote / noteDuration;
-            processed.time = time = time + noteDuration;
-
-            Debug.Log("note time: " + processed.time);
-            notes.Enqueue(processed);
+            AddNote(note, ref time, bpm);
+            PlaceNote(note, ref barCount, ref currentBarCompletion, ref currentOffset);
         }
+    }
+
+    private void AddNote(Note note, ref float time, int bpm)
+    {
+        float secsPerWholeNote = bpm / 60.0f * 4.0f;
+        ProcessedNote processed = new ProcessedNote();
+        processed.note = note;
+        
+        float noteDuration = (float)(1 << (int)(note.rhythm));
+        noteDuration = secsPerWholeNote / noteDuration;
+        processed.time = time = time + noteDuration;
+
+        notes.Enqueue(processed);
+    }
+
+    private void PlaceNote(Note note, ref int barCount, ref float currentBarCompletion, ref float currentOffset)
+    {
+        if(currentBarCompletion == 1.0f)
+        {
+            InstantiateBar(ref barCount, ref currentOffset);
+        }
+    }
+
+    private void InstantiateBar(ref int barCount, ref float currentOffset)
+    {
+        Vector3 newBarPosition = new Vector3(
+            barsTransform.position.x + barCount * barWidth,
+            barsTransform.position.y,
+            barsTransform.position.z
+        );
+
+        currentBar = InstantiateBarElement(
+            barPrefab,
+            newBarPosition
+        ).transform;
+
+        barCount++;
+        currentOffset += barWidth;
     }
 
     private GameObject InstantiateBarElement(GameObject prefab, Vector3 position)
