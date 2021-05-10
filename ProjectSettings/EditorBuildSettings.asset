@@ -12,9 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/IntroScene.unity
     guid: fbc0539e5925ca14c83c0ea79636c634
   - enabled: 1
-    path: Assets/Scenes/GoHomeScene.unity
-    guid: 56ce3cdece56f6a48962bd9f51197f5e
-  - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: 7a223bbcddc11b24d95b6e496a527787
+  - enabled: 1
+    path: Assets/Scenes/002Level_BubbleSort_LowFidelity_WebGLBuild.unity
+    guid: 9bf072e5917a7f943bdee6e1e3b77026
   m_configObjects: {}
