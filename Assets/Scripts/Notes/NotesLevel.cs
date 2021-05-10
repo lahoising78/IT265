@@ -65,6 +65,48 @@ public class NotesLevel : MonoBehaviour
                 PlaceNote(Player.Key.C);
                 singleNote.SetActive(true);
                 break;
+            
+            case NoteSceneStates.PlayD3:
+                TransitionText("");
+                allNotes.SetActive(false);
+                PlaceNote(Player.Key.D);
+                singleNote.SetActive(true);
+                break;
+            
+            case NoteSceneStates.PlayE3:
+                TransitionText("");
+                allNotes.SetActive(false);
+                PlaceNote(Player.Key.E);
+                singleNote.SetActive(true);
+                break;
+            
+            case NoteSceneStates.PlayF3:
+                TransitionText("");
+                allNotes.SetActive(false);
+                PlaceNote(Player.Key.F);
+                singleNote.SetActive(true);
+                break;
+            
+            case NoteSceneStates.PlayG3:
+                TransitionText("");
+                allNotes.SetActive(false);
+                PlaceNote(Player.Key.G);
+                singleNote.SetActive(true);
+                break;
+            
+            case NoteSceneStates.PlayA3:
+                TransitionText("");
+                allNotes.SetActive(false);
+                PlaceNote(Player.Key.A);
+                singleNote.SetActive(true);
+                break;
+            
+            case NoteSceneStates.PlayB3:
+                TransitionText("");
+                allNotes.SetActive(false);
+                PlaceNote(Player.Key.B);
+                singleNote.SetActive(true);
+                break;
 
             default:
                 Debug.Log("idk");
@@ -114,6 +156,8 @@ public class NotesLevel : MonoBehaviour
                 case NoteSceneStates.GoBlind:
                 case NoteSceneStates.ShowExtraLinesExplanation:
                 case NoteSceneStates.ShowOutsideOfStaffExplanation:
+                case NoteSceneStates.PlayC3:
+                case NoteSceneStates.BlindC3:
                     NextState();
                     break;
 
@@ -121,6 +165,24 @@ public class NotesLevel : MonoBehaviour
                     break;
             }
         }
+
+        if(key == "D" && (currentState == NoteSceneStates.PlayD3))
+            NextState();
+
+        if(key == "E" && (currentState == NoteSceneStates.PlayE3))
+            NextState();
+
+        if(key == "F" && (currentState == NoteSceneStates.PlayF3))
+            NextState();
+
+        if(key == "G" && (currentState == NoteSceneStates.PlayG3))
+            NextState();
+
+        if(key == "A" && (currentState == NoteSceneStates.PlayA3))
+            NextState();
+
+        if(key == "B" && (currentState == NoteSceneStates.PlayB3))
+            NextState();
     }
 
     public void NextState()
