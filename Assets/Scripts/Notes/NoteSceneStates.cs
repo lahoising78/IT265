@@ -1,6 +1,7 @@
 ﻿public enum NoteSceneStates
 {
-    ShowAllNotes = 0,
+    Welcome = 0,
+    ShowAllNotes,
     ExplainCleff,
     ExplainStaff,
     ShowOutsideOfStaffExplanation,
