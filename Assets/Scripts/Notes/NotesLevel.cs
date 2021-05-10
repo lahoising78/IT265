@@ -107,6 +107,53 @@ public class NotesLevel : MonoBehaviour
                 PlaceNote(Player.Key.B);
                 singleNote.SetActive(true);
                 break;
+            
+            case NoteSceneStates.GoBlind:
+                TransitionText("In the previous activity we were just playing notes in order up the scale. Now let's try to change the order a bit. Try to play the following notes.\nPress C to continue.");
+                allNotes.SetActive(false);
+                singleNote.SetActive(false);
+                break;
+            
+            case NoteSceneStates.BlindC3:
+                TransitionText("");
+                allNotes.SetActive(false);
+                PlaceNote(Player.Key.C);
+                singleNote.SetActive(true);
+                break;
+            
+            case NoteSceneStates.BlindE3:
+                TransitionText("");
+                allNotes.SetActive(false);
+                PlaceNote(Player.Key.E);
+                singleNote.SetActive(true);
+                break;
+            
+            case NoteSceneStates.BlindG3:
+                TransitionText("");
+                allNotes.SetActive(false);
+                PlaceNote(Player.Key.G);
+                singleNote.SetActive(true);
+                break;
+            
+            case NoteSceneStates.BlindA3:
+                TransitionText("");
+                allNotes.SetActive(false);
+                PlaceNote(Player.Key.A);
+                singleNote.SetActive(true);
+                break;
+            
+            case NoteSceneStates.BlindB3:
+                TransitionText("");
+                allNotes.SetActive(false);
+                PlaceNote(Player.Key.B);
+                singleNote.SetActive(true);
+                break;
+            
+            case NoteSceneStates.Congrats:
+                TransitionText("Congratulations! Now you know how to recognize notes in a Staff!\nClick on home to go back to the main screen.");
+                allNotes.SetActive(false);
+                singleNote.SetActive(false);
+                break;
 
             default:
                 Debug.Log("idk");
@@ -169,19 +216,19 @@ public class NotesLevel : MonoBehaviour
         if(key == "D" && (currentState == NoteSceneStates.PlayD3))
             NextState();
 
-        if(key == "E" && (currentState == NoteSceneStates.PlayE3))
+        if(key == "E" && (currentState == NoteSceneStates.PlayE3 || currentState == NoteSceneStates.BlindE3))
             NextState();
 
         if(key == "F" && (currentState == NoteSceneStates.PlayF3))
             NextState();
 
-        if(key == "G" && (currentState == NoteSceneStates.PlayG3))
+        if(key == "G" && (currentState == NoteSceneStates.PlayG3 || currentState == NoteSceneStates.BlindG3))
             NextState();
 
-        if(key == "A" && (currentState == NoteSceneStates.PlayA3))
+        if(key == "A" && (currentState == NoteSceneStates.PlayA3 || currentState == NoteSceneStates.BlindA3))
             NextState();
 
-        if(key == "B" && (currentState == NoteSceneStates.PlayB3))
+        if(key == "B" && (currentState == NoteSceneStates.PlayB3 || currentState == NoteSceneStates.BlindB3))
             NextState();
     }
 
