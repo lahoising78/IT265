@@ -8,7 +8,9 @@ public class NotesLevel : MonoBehaviour
     private NoteSceneStates startState = NoteSceneStates.Welcome;
     [SerializeField] private GameObject wholeNotePrefab = null;
     public TMP_Text textElement = null;
+
     private IEnumerator coroutine = null;
+    private NoteSceneStates currentState = (NoteSceneStates)0;
 
     void Start()
     {
@@ -20,12 +22,14 @@ public class NotesLevel : MonoBehaviour
         switch(state)
         {
             case NoteSceneStates.Welcome:
-                TransitionText("Welcome! In this section you will learn how to recognize the notes in a staff");
+                TransitionText("Welcome! In this section you will learn how to recognize the notes in a staff. \nPress C to continue");
                 break;
 
             default:
+                Debug.Log("idk");
                 break;
         }
+        currentState = state;
     }
 
     private void TransitionText(string text, float moveTime = 1.0f)
@@ -52,5 +56,27 @@ public class NotesLevel : MonoBehaviour
         }
         textElement.color = endColor;
         yield return null;
+    }
+
+    public void OnPianoKeyClick(string key)
+    {
+        if(key == "C")
+        {
+            switch(currentState)
+            {
+                case NoteSceneStates.Welcome:
+                    NextState();
+                    break;
+
+                default:
+                    break;
+            }
+        }
+    }
+
+    public void NextState()
+    {
+        if(currentState >= NoteSceneStates.Congrats) return;
+        SetState(currentState+1);
     }
 }
